@@ -1,12 +1,95 @@
- <mvc:View controllerName="com.block.dev.priceTracker.controller.MainView"
-  displayBlock="true"
-  xmlns="sap.m"
-  xmlns:mvc="sap.ui.core.mvc">
-  <App id="idAppControl" >
+<mvc:View controllerName="com.block.dev.priceTracker.controller.MainView" displayBlock="true" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" height="100%">
+  <App id="idAppControl">
     <pages>
-      <Page title="{i18n>title}">
-        <content></content>
-      </Page>
+      <f:DynamicPage headerExpanded="true" toggleHeaderOnTitleClick="true">
+        <f:title>
+          <f:DynamicPageTitle>
+            <f:heading>
+              <Title text="Crypto Live Prices Tracker" />
+            </f:heading>
+            <f:content>
+              <OverflowToolbar>
+                <GenericTag text="SR" status="Error" press="onPressOpenPopover" design="StatusIconHidden">
+                  <ObjectNumber number="2" unit="M" emphasized="false" state="Error" />
+                </GenericTag>
+              </OverflowToolbar>
+            </f:content>
+          </f:DynamicPageTitle>
+        </f:title>
+        <f:content>
+          <Table id="idCryptoLivePrices" sticky="HeaderToolbar,ColumnHeaders" inset="false" items="{/}" class="sapFDynamicPageAlignContent" width="auto" growingThreshold="50" growing="true" growingScrollToLoad="true">
+            <headerToolbar>
+              <Toolbar>
+                <Title text="Cryptocurrency Prices by Market Cap" level="H2" />
+              </Toolbar>
+            </headerToolbar>
+            <columns>
+              <Column>
+                <Text text="Rank#" />
+              </Column>            
+              <Column >
+                <Text text="Coin" />
+              </Column>
+              <Column>
+                <Text text="Current Price" />
+              </Column>
+              <Column>
+                <Text text="ATH Price" />
+              </Column>
+              <Column>
+                <Text text="24h Change" />
+              </Column>
+              <Column>
+                <Text text="Market Cap" />
+              </Column>      
+               <Column>
+                <Text text="7 Days Change" />
+              </Column>        
+
+            </columns>
+            <items>
+              <ColumnListItem>
+                <cells>
+                  <Text text="{market_cap_rank}"/>
+                  <FlexBox justifyContent="Start" alighItems="Start">
+                    <Image src="{image}" width="35px" height="35px"  class="sapUiSmallMarginEnd"/>                  
+                    <Text class="sapUiTinyMarginTop" text="{
+                      path:'symbol',
+                      formatter: '.upperCase'}"/>       
+                  </FlexBox>                               
+                  <ObjectNumber
+                    number="{
+                        parts:[{path:'current_price'},{path:'CurrencyCode'}],
+                        type: 'sap.ui.model.type.Currency',
+                        formatOptions: {showMeasure: false}
+                      }"
+                    unit="USD"/>
+                 <ObjectNumber                    
+                  number="{
+                      parts:[{path:'ath'},{path:'CurrencyCode'}],
+                      type: 'sap.ui.model.type.Currency',
+                      formatOptions: {showMeasure: false}
+                    }"
+                  unit="USD"/>
+                
+                <ObjectStatus text="{price_change_percentage_24h} %" 
+                  state="{=${price_change_percentage_24h}>=0? 'Success' : 'Error'}" />
+                <ObjectNumber
+                    number="{
+                        parts:[{path:'market_cap'},{path:'CurrencyCode'}],
+                        type: 'sap.ui.model.type.Currency',
+                        formatOptions: {showMeasure: false}
+                      }"
+                    unit="USD"
+                    state="Success" />
+              
+                <Text text="{total_supply}" />
+              </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+        </f:content>
+      </f:DynamicPage>
     </pages>
   </App>
 </mvc:View>
