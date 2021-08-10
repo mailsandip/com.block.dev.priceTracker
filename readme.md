@@ -14,3 +14,6 @@ I will enhance this App by using Micro Charts, Srearch, Coin Info etc etc
 
 This project has been generated with 💙 and [easy-ui5](https://github.com/SAP)
 
+Cheers, 
+Sam
+
