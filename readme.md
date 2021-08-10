@@ -5,7 +5,10 @@ As of now, I have used the Coingecko REST services to fetch the live prices. I w
 I could have used reactjs and some bootstrap js to create the front end. But I like to experiment using the OpenUi5 framework. 
 Here is a screenshot of the App
 
-![image](https://user-images.githubusercontent.com/5169927/128872035-1a9df588-e80f-47c0-9e7d-14233aa8ae40.png)
+![image](https://user-images.githubusercontent.com/5169927/128872480-b6017d7a-25eb-4171-bccd-7dfeb1627955.png)
+
+
+I will enhance this App by using Micro Charts, Srearch, Coin Info etc etc
 
 ## Credits
 
