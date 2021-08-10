@@ -5,7 +5,7 @@
         <f:title>
           <f:DynamicPageTitle>
             <f:heading>
-              <Title text="Crypto Live Prices Tracker" />
+              <Title text="Crypto Live Prices Tracker App using SAPUI5 Framework" />
             </f:heading>
             <f:content>
               <OverflowToolbar>
